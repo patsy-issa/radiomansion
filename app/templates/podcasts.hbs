@@ -1,0 +1,18 @@
+<div class="player" style={{playerStyle}}>
+  <span class="player__title">
+    Radio Mansion
+  </span>
+  <span class="player__now-playing">
+    {{#if hifi.isLoading}}
+      Loading ...
+    {{else}}
+      Now Playing: {{hifi.nowPlaying}}
+    {{/if}}
+  </span>
+  <span class="player__time">
+    {{seconds-to-human hifi.position}}-{{seconds-to-human hifi.duration}}
+  </span>
+</div>
+
+{{podcast-container podcasts=model}}
+{{outlet}}

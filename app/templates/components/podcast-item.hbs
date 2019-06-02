@@ -1,0 +1,26 @@
+<span class="podcast__item-title">
+  {{podcast.title}}
+</span>
+<p class="podcast__item-description">
+  {{#if isExternal}}
+    <a href={{externalEpisode.src}} target="_blank">
+      {{{podcast.description}}}
+    </a>
+  {{else}}
+    {{#link-to
+      "podcasts.podcast"
+      podcast.id
+      activeClass="podcast__episode_is-active"
+    }}
+      {{{podcast.description}}}
+      {{#each podcast.episodes as |episode|}}
+        {{#if episode.title}}
+          {{link-to episode.title "podcasts.podcast.episode" podcast.id episode.id class="podcast__episode" activeClass="podcast__episode_is-active" bubbles=false}}
+        {{/if}}
+      {{/each}}
+    {{/link-to}}
+  {{/if}}
+</p>
+{{#if podcast.imgSrc}}
+  <img src="/assets/images/{{podcast.imgSrc}}" alt={{podcast.imgTitle}} class="podcast__image">
+{{/if}}
